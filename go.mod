@@ -2,6 +2,16 @@ module github.com/zaunist/filebox
 
 go 1.21
 
+replace (
+	github.com/zaunist/filebox/api => ./backend/api
+	github.com/zaunist/filebox/config => ./backend/config
+	github.com/zaunist/filebox/middleware => ./backend/middleware
+	github.com/zaunist/filebox/model => ./backend/model
+	github.com/zaunist/filebox/service => ./backend/service
+	github.com/zaunist/filebox/storage => ./backend/storage
+	github.com/zaunist/filebox/utils => ./backend/utils
+)
+
 require (
 	github.com/golang-jwt/jwt/v5 v5.2.0
 	github.com/google/uuid v1.5.0
