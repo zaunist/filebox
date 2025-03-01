@@ -15,7 +15,7 @@ ENV GOPROXY=https://goproxy.cn,direct
 # 复制整个后端目录
 COPY backend/ ./
 # 启用 CGO 以支持 SQLite
-RUN CGO_ENABLED=1 GOOS=linux go build -o /filebox-server
+RUN go mod tidy && CGO_ENABLED=1 GOOS=linux go build -o /filebox-server
 
 # 前端构建阶段
 FROM node:18-alpine AS frontend-builder
