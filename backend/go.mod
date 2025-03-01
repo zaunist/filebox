@@ -1,6 +1,6 @@
-module github.com/zaunist/filebox
+module github.com/zaunist/filebox/backend
 
-go 1.24.0
+go 1.24
 
 require (
 	github.com/golang-jwt/jwt/v5 v5.2.1
