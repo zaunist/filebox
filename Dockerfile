@@ -20,8 +20,6 @@ RUN CGO_ENABLED=1 GOOS=linux go build -o /filebox-server
 # 前端构建阶段
 FROM node:18-alpine AS frontend-builder
 WORKDIR /app
-# 设置 yarn 镜像源
-RUN yarn config set registry https://registry.npmmirror.com
 # 复制依赖文件
 COPY frontend/package.json frontend/yarn.lock* ./
 # 安装依赖
