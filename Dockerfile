@@ -19,7 +19,7 @@ RUN go mod download
 # 复制源代码
 COPY . ./
 # 启用 CGO 以支持 SQLite
-RUN CGO_ENABLED=1 GOOS=linux go build -o /filebox-server ./backend
+RUN CGO_ENABLED=1 GOOS=linux go build -o /filebox-server -mod=mod ./backend
 
 # 前端构建阶段
 FROM node:18-alpine AS frontend-builder

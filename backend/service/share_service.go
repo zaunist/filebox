@@ -5,9 +5,9 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/zaunist/filebox/config"
-	"github.com/zaunist/filebox/model"
-	"github.com/zaunist/filebox/utils"
+	"github.com/zaunist/filebox/backend/config"
+	"github.com/zaunist/filebox/backend/model"
+	"github.com/zaunist/filebox/backend/utils"
 	"gorm.io/gorm"
 )
 

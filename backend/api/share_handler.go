@@ -6,7 +6,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
-	"github.com/zaunist/filebox/service"
+	"github.com/zaunist/filebox/backend/service"
 )
 
 // ShareHandler 分享处理程序

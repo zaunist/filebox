@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/zaunist/filebox/model"
+	"github.com/zaunist/filebox/backend/model"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
