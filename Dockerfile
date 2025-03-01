@@ -10,8 +10,8 @@ FROM node:18-alpine AS frontend-builder
 WORKDIR /app
 # 复制依赖文件
 COPY frontend/package.json frontend/yarn.lock* ./
-# 安装依赖
-RUN yarn install
+# 设置国内源 并安装依赖
+RUN yarn config set registry https://registry.npmmirror.com && yarn install
 # 复制源代码
 COPY frontend/ ./
 # 使用 yarn 构建前端，忽略 TypeScript 错误

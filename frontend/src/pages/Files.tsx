@@ -391,7 +391,7 @@ const Files: React.FC = () => {
                       onChange={handleAnonymousShareChange}
                       placeholder="留空将自动生成"
                     />
-                    <p className="mt-1 w-full max-w-[180px] text-xs text-gray-500">设置便于记忆的分享码</p>
+                    <p className="mt-1 w-full max-w-[180px] text-xs text-gray-500">设置便于记忆的分享码（字母和数字的六位组合）</p>
                   </div>
                   <div className="flex flex-col items-start">
                     <label htmlFor="anonymous-expires-in" className="block w-full text-sm font-medium text-gray-700">
@@ -549,7 +549,7 @@ const Files: React.FC = () => {
                         onChange={handleShareChange}
                         placeholder="留空将自动生成"
                       />
-                      <p className="mt-1 w-full max-w-[180px] text-xs text-gray-500">设置便于记忆的分享码</p>
+                      <p className="mt-1 w-full max-w-[180px] text-xs text-gray-500">设置便于记忆的分享码（字母和数字的六位组合）</p>
                     </div>
                     <div className="flex flex-col items-start">
                       <label htmlFor="expires_in" className="block w-full text-sm font-medium text-gray-700">

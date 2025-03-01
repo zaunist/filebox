@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/labstack/echo/v4"
@@ -124,7 +125,38 @@ func main() {
 
 	// 提供前端静态文件
 	frontendHandler := http.FileServer(GetFrontendFS())
-	e.GET("/*", echo.WrapHandler(frontendHandler))
+
+	// 创建一个自定义处理程序，将所有非API请求重定向到index.html
+	e.GET("/*", func(c echo.Context) error {
+		// 如果请求的是API路径，跳过处理
+		if len(c.Path()) >= 4 && c.Path()[:4] == "/api" {
+			return echo.ErrNotFound
+		}
+
+		// 尝试直接提供静态文件
+		reqPath := c.Request().URL.Path
+
+		// 检查请求的文件是否存在
+		if reqPath == "/" || reqPath == "/index.html" {
+			// 直接提供index.html
+			return echo.WrapHandler(frontendHandler)(c)
+		}
+
+		// 检查是否是静态资源请求（如CSS、JS、图片等）
+		if strings.HasPrefix(reqPath, "/assets/") ||
+			strings.HasSuffix(reqPath, ".js") ||
+			strings.HasSuffix(reqPath, ".css") ||
+			strings.HasSuffix(reqPath, ".ico") ||
+			strings.HasSuffix(reqPath, ".png") ||
+			strings.HasSuffix(reqPath, ".jpg") ||
+			strings.HasSuffix(reqPath, ".svg") {
+			return echo.WrapHandler(frontendHandler)(c)
+		}
+
+		// 对于所有其他请求，返回index.html
+		c.Request().URL.Path = "/"
+		return echo.WrapHandler(frontendHandler)(c)
+	})
 
 	// 启动服务器
 	port := fmt.Sprintf(":%d", appConfig.Port)
