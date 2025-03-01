@@ -7,15 +7,19 @@ ARG VERSION
 
 # 后端构建阶段
 FROM golang:1.21 AS backend-builder
-# 设置 GOPATH 和工作目录
-ENV GOPATH=/go
-WORKDIR /go/src/github.com/zaunist/filebox/backend
+# 设置工作目录
+WORKDIR /build
 # 设置 Go 模块代理
 ENV GOPROXY=https://goproxy.cn,direct
-# 复制整个后端目录
-COPY backend/ ./
+ENV GO111MODULE=on
+# 复制 go.mod 和 go.sum 文件
+COPY go.mod go.sum ./
+# 下载依赖
+RUN go mod download
+# 复制源代码
+COPY . ./
 # 启用 CGO 以支持 SQLite
-RUN go mod tidy && CGO_ENABLED=1 GOOS=linux go build -o /filebox-server
+RUN CGO_ENABLED=1 GOOS=linux go build -o /filebox-server ./backend
 
 # 前端构建阶段
 FROM node:18-alpine AS frontend-builder

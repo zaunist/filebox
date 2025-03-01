@@ -7,12 +7,12 @@ import (
 
 	"github.com/labstack/echo/v4"
 	echomiddleware "github.com/labstack/echo/v4/middleware"
-	"github.com/zaunist/filebox/backend/api"
-	"github.com/zaunist/filebox/backend/config"
-	"github.com/zaunist/filebox/backend/middleware"
-	"github.com/zaunist/filebox/backend/model"
-	"github.com/zaunist/filebox/backend/service"
-	"github.com/zaunist/filebox/backend/storage"
+	"github.com/zaunist/filebox/api"
+	"github.com/zaunist/filebox/config"
+	"github.com/zaunist/filebox/middleware"
+	"github.com/zaunist/filebox/model"
+	"github.com/zaunist/filebox/service"
+	"github.com/zaunist/filebox/storage"
 )
 
 func main() {

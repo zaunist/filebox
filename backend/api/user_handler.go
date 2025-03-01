@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
-	"github.com/zaunist/filebox/backend/service"
+	"github.com/zaunist/filebox/service"
 )
 
 // UserHandler 用户处理程序

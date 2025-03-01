@@ -8,7 +8,7 @@ import (
 
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/labstack/echo/v4"
-	"github.com/zaunist/filebox/backend/model"
+	"github.com/zaunist/filebox/model"
 )
 
 // JWTConfig JWT配置
