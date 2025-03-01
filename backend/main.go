@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"net/http"
 	"time"
 
 	"github.com/labstack/echo/v4"
@@ -63,7 +64,7 @@ func main() {
 	}
 
 	// 创建管理员用户（如果不存在）
-	err = userService.CreateAdminUser(appConfig.AdminEmail, appConfig.AdminPassword)
+	err = userService.CreateAdminUser(appConfig.AdminEmail, appConfig.AdminPassword, appConfig.AdminUsername)
 	if err != nil {
 		log.Printf("创建管理员用户失败: %v", err)
 	} else {
@@ -120,6 +121,10 @@ func main() {
 			"time":   time.Now().Format(time.RFC3339),
 		})
 	})
+
+	// 提供前端静态文件
+	frontendHandler := http.FileServer(GetFrontendFS())
+	e.GET("/*", echo.WrapHandler(frontendHandler))
 
 	// 启动服务器
 	port := fmt.Sprintf(":%d", appConfig.Port)

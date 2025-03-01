@@ -18,6 +18,7 @@ type AppConfig struct {
 	DefaultDownloadLimit int
 	AdminEmail           string
 	AdminPassword        string
+	AdminUsername        string
 }
 
 // NewAppConfig 创建应用配置
@@ -31,8 +32,9 @@ func NewAppConfig() *AppConfig {
 		MaxAnonymousFileSize: getEnvAsInt64("MAX_ANONYMOUS_FILE_SIZE", 50*1024*1024), // 50MB
 		DefaultExpireHours:   getEnvAsInt("DEFAULT_EXPIRE_HOURS", 1),
 		DefaultDownloadLimit: getEnvAsInt("DEFAULT_DOWNLOAD_LIMIT", 0),
-		AdminEmail:           getEnv("ADMIN_EMAIL", "admin@zaunist.com"),
-		AdminPassword:        getEnv("ADMIN_PASSWORD", "box123"),
+		AdminEmail:           getEnv("ADMIN_EMAIL", "box@zaunist.com"),
+		AdminPassword:        getEnv("ADMIN_PASSWORD", "box123..."),
+		AdminUsername:        getEnv("ADMIN_USERNAME", "boxer"),
 	}
 }
 

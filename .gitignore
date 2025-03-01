@@ -4,6 +4,8 @@
 !/backend/storage/.gitkeep
 /backend/data/*
 !/backend/data/.gitkeep
+/backend/filebox-server
+/backend/frontend_dist/
 
 # 依赖
 /backend/vendor/
@@ -39,4 +41,11 @@ Thumbs.db
 
 # 测试覆盖率
 /backend/coverage/
-/frontend/coverage/ 
+/frontend/coverage/
+
+# 数据目录
+/data/
+/storage/
+
+# 数据库文件
+*.db 

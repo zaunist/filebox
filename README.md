@@ -2,7 +2,8 @@
 
 FileBox是一个现代化的文件分享系统，允许用户上传、管理和分享文件。系统支持文件访问控制、过期时间设置和下载次数限制等功能。
 
-灵感来自 https://github.com/vastsa/FileCodeBox ，由 cursor + claude-3.7-sonnet 开发完成，作者仅仅按 `enter`，让 AI 继续干活
+灵感来自 https://github.com/vastsa/FileCodeBox ，由 cursor + claude-3.7-sonnet 开发完成，作者仅仅按 `enter`，让 AI 继续干活。
+PS：修改多了以后AI有些抽风，后期还是得作者介入才能完成。
 
 ## 功能特点
 
@@ -13,6 +14,7 @@ FileBox是一个现代化的文件分享系统，允许用户上传、管理和�
 - 下载次数限制
 - 管理员控制面板
 - 响应式前端界面
+- 单一二进制文件部署（前端嵌入后端）
 
 ## 默认管理员账户
 
@@ -26,10 +28,11 @@ FileBox是一个现代化的文件分享系统，允许用户上传、管理和�
 
 ### 后端
 - Go
-- Gin Web框架
+- Echo Web框架
 - GORM ORM库
-- PostgreSQL数据库
+- SQLite数据库
 - JWT认证
+- Go Embed（前端文件嵌入）
 
 ### 前端
 - React
@@ -61,8 +64,29 @@ docker-compose up
 ```
 
 3. 访问应用
-- 前端: http://localhost:5173
-- 后端API: http://localhost:8080/api
+- 应用: http://localhost:8080
+
+### 本地开发
+
+1. 克隆仓库
+```bash
+git clone https://github.com/yourusername/filebox.git
+cd filebox
+```
+
+2. 使用构建脚本构建应用
+```bash
+chmod +x build.sh
+./build.sh
+```
+
+3. 运行应用
+```bash
+./backend/filebox-server
+```
+
+4. 访问应用
+- 应用: http://localhost:8080
 
 ## 项目结构
 
@@ -74,10 +98,11 @@ filebox/
 │   ├── middleware/      # 中间件
 │   ├── models/          # 数据模型
 │   ├── services/        # 业务逻辑
-│   ├── storage/         # 文件存储
+│   ├── filestore/       # 文件存储
 │   ├── utils/           # 工具函数
+│   ├── frontend_dist/   # 嵌入的前端构建产物
 │   ├── main.go          # 入口文件
-│   └── Dockerfile.dev   # 开发环境Docker配置
+│   └── embed.go         # 前端文件嵌入
 │
 ├── frontend/            # React前端代码
 │   ├── src/             # 源代码
@@ -88,13 +113,13 @@ filebox/
 │   │   ├── pages/       # 页面组件
 │   │   └── App.tsx      # 主应用组件
 │   ├── public/          # 静态资源
-│   └── Dockerfile.dev   # 开发环境Docker配置
+│   └── vite.config.ts   # Vite配置
 │
 ├── .github/             # GitHub配置
 │   └── workflows/       # GitHub Actions工作流
 │       ├── docker-build-push.yml  # Docker构建和推送工作流
-│       └── code-check.yml         # 代码检查工作流
 │
+├── build.sh             # 本地构建脚本
 └── docker-compose.yml   # Docker Compose配置
 ```
 
@@ -113,7 +138,7 @@ filebox/
 
 当代码推送到 `main` 分支或创建新的版本标签（格式为 `v*`）时，会自动构建 Docker 镜像并推送到 DockerHub：
 
-- 构建多平台镜像（支持 x86_64 和 ARM64 架构）
+- 构建多平台镜像（支持 x86_64），arm 在拉取依赖时报错，也用不上，不管了
 - 自动添加适当的标签（版本号、分支名、SHA 等）
 - 使用缓存加速构建过程
 

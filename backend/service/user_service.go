@@ -191,7 +191,7 @@ func (s *UserService) GetUserByID(id string) (*model.User, error) {
 }
 
 // CreateAdminUser 创建管理员用户
-func (s *UserService) CreateAdminUser(email, password string) error {
+func (s *UserService) CreateAdminUser(email, password, username string) error {
 	// 检查是否已存在管理员
 	var adminCount int64
 	s.DB.Model(&model.User{}).Where("is_admin = ?", true).Count(&adminCount)
@@ -208,7 +208,7 @@ func (s *UserService) CreateAdminUser(email, password string) error {
 	// 创建管理员用户
 	admin := &model.User{
 		ID:        uuid.New(),
-		Username:  "boxer",
+		Username:  username,
 		Email:     email,
 		Password:  hashedPassword,
 		IsAdmin:   true,
