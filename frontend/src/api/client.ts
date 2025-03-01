@@ -2,7 +2,7 @@ import axios from 'axios'
 
 // 创建axios实例
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:9090/api',
+  baseURL: import.meta.env.VITE_API_URL || '/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -33,8 +33,8 @@ apiClient.interceptors.response.use(
       localStorage.removeItem('token')
       localStorage.removeItem('user')
       // 如果不在登录页，重定向到登录页
-      if (window.location.pathname !== '/login') {
-        window.location.href = '/login'
+      if (window.location.pathname !== '/') {
+        window.location.href = '/'
       }
     }
     return Promise.reject(error)

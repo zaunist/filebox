@@ -1,94 +1,114 @@
-# FileBox - 文件分享系统
+# 📦 FileBox - 文件快递柜
 
-FileBox是一个现代化的文件分享系统，允许用户上传、管理和分享文件。系统支持文件访问控制、过期时间设置和下载次数限制等功能。
+<div align="center">
+  
+![FileBox Logo](https://img.shields.io/badge/FileBox-文件分享系统-blue?style=for-the-badge&logo=dropbox)
 
-灵感来自 https://github.com/vastsa/FileCodeBox ，由 cursor + claude-3.7-sonnet 开发完成，作者仅仅按 `enter`，让 AI 继续干活。
-PS：修改多了以后AI有些抽风，后期还是得作者介入才能完成。
+*安全、高效、易用的文件分享解决方案*
 
-## 功能特点
+</div>
 
-- 用户认证与授权
-- 文件上传与管理
-- 文件分享与访问控制
-- 文件过期时间设置
-- 下载次数限制
-- 管理员控制面板
-- 响应式前端界面
-- 单一二进制文件部署（前端嵌入后端）
+## ✨ 功能特点
 
-## 默认管理员账户
+- 🔐 **用户认证与授权** - 安全可靠的账户系统
+- 📤 **文件上传与管理** - 轻松管理您的所有文件
+- 🔗 **文件分享与访问控制** - 灵活控制谁可以访问您的文件
+- ⏱️ **文件过期时间设置** - 自动过期，无需手动清理
+- 🔢 **下载次数限制** - 精确控制文件的下载次数
+- 📊 **管理员控制面板** - 全面监控系统运行状态
+- 📱 **响应式前端界面** - 在任何设备上都能获得出色体验
+- 📦 **单一二进制文件部署** - 部署简单快捷
+
+## 🚀 快速开始
+
+### 默认管理员账户
 
 系统启动时会自动创建一个默认的管理员账户：
-- 用户名：boxer
-- 密码：box123
 
-请在生产环境中及时修改默认密码。
+| 邮箱 | 密码 |
+|------|------|
+| box@zaunist.com | box123... |
 
-## 技术栈
+> ⚠️ **注意**: 请在生产环境中及时修改默认密码。
 
-### 后端
-- Go
-- Echo Web框架
-- GORM ORM库
-- SQLite数据库
-- JWT认证
-- Go Embed（前端文件嵌入）
+## 🛠️ 技术栈
 
-### 前端
-- React
-- TypeScript
-- Vite
-- TailwindCSS
-- React Router
-- React Query
-- Radix UI组件
+<table>
+  <tr>
+    <th>后端</th>
+    <th>前端</th>
+  </tr>
+  <tr>
+    <td>
+      <ul>
+        <li>Go</li>
+        <li>Echo Web框架</li>
+        <li>GORM ORM库</li>
+        <li>SQLite数据库</li>
+        <li>JWT认证</li>
+        <li>Go Embed（前端静态文件嵌入）</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>React</li>
+        <li>TypeScript</li>
+        <li>Vite</li>
+        <li>TailwindCSS</li>
+        <li>React Router</li>
+        <li>React Query</li>
+        <li>Radix UI组件</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
-## 开发环境设置
+## 💻 开发环境设置
 
 ### 前提条件
-- Docker和Docker Compose
-- Node.js 18+（仅用于本地开发）
-- Go 1.21+（仅用于本地开发）
+- 🐳 Docker和Docker Compose
+- 📦 Node.js 18+（仅用于本地开发）
+- 🔧 Go 1.21+（仅用于本地开发）
 
 ### 使用Docker启动开发环境
 
-1. 克隆仓库
+1️⃣ 克隆仓库
 ```bash
 git clone https://github.com/yourusername/filebox.git
 cd filebox
 ```
 
-2. 启动Docker容器
+2️⃣ 启动Docker容器
 ```bash
 docker-compose up
 ```
 
-3. 访问应用
-- 应用: http://localhost:8080
+3️⃣ 访问应用
+- 🌐 应用: http://localhost:8080
 
 ### 本地开发
 
-1. 克隆仓库
+1️⃣ 克隆仓库
 ```bash
 git clone https://github.com/yourusername/filebox.git
 cd filebox
 ```
 
-2. 使用构建脚本构建应用
+2️⃣ 使用构建脚本构建应用
 ```bash
 chmod +x build.sh
 ./build.sh
 ```
 
-3. 运行应用
+3️⃣ 运行应用
 ```bash
 ./backend/filebox-server
 ```
 
-4. 访问应用
-- 应用: http://localhost:8080
+4️⃣ 访问应用
+- 🌐 应用: http://localhost:8080
 
-## 项目结构
+## 📂 项目结构
 
 ```
 filebox/
@@ -123,7 +143,7 @@ filebox/
 └── docker-compose.yml   # Docker Compose配置
 ```
 
-## 持续集成/持续部署
+## 🔄 持续集成/持续部署
 
 本项目使用 GitHub Actions 进行持续集成和部署：
 
@@ -131,16 +151,16 @@ filebox/
 
 每次推送到 `main` 分支或创建 Pull Request 时，会自动运行代码检查工作流，包括：
 
-- 后端 Go 代码检查和测试
-- 前端 ESLint 检查、类型检查和构建测试
+- ✅ 后端 Go 代码检查和测试
+- ✅ 前端 ESLint 检查、类型检查和构建测试
 
 ### Docker 镜像构建和推送
 
 当代码推送到 `main` 分支或创建新的版本标签（格式为 `v*`）时，会自动构建 Docker 镜像并推送到 DockerHub：
 
-- 构建多平台镜像（支持 x86_64），arm 在拉取依赖时报错，也用不上，不管了
-- 自动添加适当的标签（版本号、分支名、SHA 等）
-- 使用缓存加速构建过程
+- 🏗️ 构建多平台镜像（支持 x86_64）
+- 🏷️ 自动添加适当的标签（版本号、分支名、SHA 等）
+- ⚡ 使用缓存加速构建过程
 
 要使用此功能，需要在 GitHub 仓库设置中添加以下 Secrets：
 - `DOCKERHUB_USERNAME`: DockerHub 用户名
@@ -148,6 +168,12 @@ filebox/
 
 详细说明请参考 [.github/workflows/README.md](.github/workflows/README.md)
 
-## 许可证
+## 💡 灵感来源
+
+灵感来自 [FileCodeBox](https://github.com/vastsa/FileCodeBox)，由 cursor + claude-3.7-sonnet 开发完成，作者仅仅按 `enter`，让 AI 继续干活。
+
+> PS：修改多了以后AI有些抽风，后期还是得作者介入才能完成。
+
+## 📜 许可证
 
 MIT
