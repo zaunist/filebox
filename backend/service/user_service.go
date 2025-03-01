@@ -4,10 +4,10 @@ import (
 	"errors"
 	"time"
 
-	"github.com/filebox/backend/middleware"
-	"github.com/filebox/backend/model"
-	"github.com/filebox/backend/utils"
 	"github.com/google/uuid"
+	"github.com/zaunist/filebox/backend/middleware"
+	"github.com/zaunist/filebox/backend/model"
+	"github.com/zaunist/filebox/backend/utils"
 	"gorm.io/gorm"
 )
 

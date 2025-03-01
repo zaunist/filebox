@@ -7,18 +7,18 @@ import (
 	"mime/multipart"
 	"time"
 
-	"github.com/filebox/backend/config"
-	"github.com/filebox/backend/model"
-	"github.com/filebox/backend/storage"
 	"github.com/google/uuid"
+	"github.com/zaunist/filebox/backend/config"
+	"github.com/zaunist/filebox/backend/model"
+	"github.com/zaunist/filebox/backend/storage"
 	"gorm.io/gorm"
 )
 
 // FileService 文件服务
 type FileService struct {
-	DB          *gorm.DB
-	Storage     storage.FileStorage
-	AppConfig   *config.AppConfig
+	DB        *gorm.DB
+	Storage   storage.FileStorage
+	AppConfig *config.AppConfig
 }
 
 // FileUploadResponse 文件上传响应
@@ -102,13 +102,13 @@ func (s *FileService) GetFileContent(file *model.File) (io.ReadCloser, error) {
 // DeleteFile 删除文件
 func (s *FileService) DeleteFile(id string, userID *uuid.UUID) error {
 	var file model.File
-	
+
 	// 查询文件
 	query := s.DB.Where("id = ?", id)
 	if userID != nil {
 		query = query.Where("user_id = ?", userID)
 	}
-	
+
 	result := query.First(&file)
 	if result.Error != nil {
 		if errors.Is(result.Error, gorm.ErrRecordNotFound) {
@@ -116,33 +116,33 @@ func (s *FileService) DeleteFile(id string, userID *uuid.UUID) error {
 		}
 		return result.Error
 	}
-	
+
 	// 开始事务
 	tx := s.DB.Begin()
-	
+
 	// 删除相关的分享记录
 	if err := tx.Where("file_id = ?", file.ID).Delete(&model.Share{}).Error; err != nil {
 		tx.Rollback()
 		return err
 	}
-	
+
 	// 删除文件记录
 	if err := tx.Delete(&file).Error; err != nil {
 		tx.Rollback()
 		return err
 	}
-	
+
 	// 提交事务
 	if err := tx.Commit().Error; err != nil {
 		return err
 	}
-	
+
 	// 删除存储中的文件
 	if err := s.Storage.Delete(file.StoragePath); err != nil {
 		// 即使删除存储文件失败，数据库事务已经提交，所以只记录错误
 		fmt.Printf("删除存储文件失败: %v\n", err)
 	}
-	
+
 	return nil
 }
 
@@ -150,17 +150,17 @@ func (s *FileService) DeleteFile(id string, userID *uuid.UUID) error {
 func (s *FileService) GetUserFiles(userID string, page, pageSize int) ([]model.File, int64, error) {
 	var files []model.File
 	var total int64
-	
+
 	// 计算总数
 	if err := s.DB.Model(&model.File{}).Where("user_id = ?", userID).Count(&total).Error; err != nil {
 		return nil, 0, err
 	}
-	
+
 	// 分页查询
 	offset := (page - 1) * pageSize
 	if err := s.DB.Where("user_id = ?", userID).Order("created_at DESC").Offset(offset).Limit(pageSize).Find(&files).Error; err != nil {
 		return nil, 0, err
 	}
-	
+
 	return files, total, nil
-} 
+}

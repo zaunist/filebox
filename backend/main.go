@@ -5,14 +5,14 @@ import (
 	"log"
 	"time"
 
-	"github.com/filebox/backend/api"
-	"github.com/filebox/backend/config"
-	"github.com/filebox/backend/middleware"
-	"github.com/filebox/backend/model"
-	"github.com/filebox/backend/service"
-	"github.com/filebox/backend/storage"
 	"github.com/labstack/echo/v4"
 	echomiddleware "github.com/labstack/echo/v4/middleware"
+	"github.com/zaunist/filebox/backend/api"
+	"github.com/zaunist/filebox/backend/config"
+	"github.com/zaunist/filebox/backend/middleware"
+	"github.com/zaunist/filebox/backend/model"
+	"github.com/zaunist/filebox/backend/service"
+	"github.com/zaunist/filebox/backend/storage"
 )
 
 func main() {

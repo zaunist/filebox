@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/filebox/backend/service"
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
+	"github.com/zaunist/filebox/backend/service"
 )
 
 // ShareHandler 分享处理程序
@@ -22,7 +22,7 @@ func (h *ShareHandler) CreateShare(c echo.Context) error {
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, "无效的用户ID")
 	}
-	
+
 	fileID := c.Param("id")
 
 	// 获取参数
@@ -142,7 +142,7 @@ func (h *ShareHandler) DeleteShare(c echo.Context) error {
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, "无效的用户ID")
 	}
-	
+
 	shareID := c.Param("id")
 
 	// 删除分享
@@ -169,4 +169,4 @@ func (h *ShareHandler) RegisterRoutes(e *echo.Echo, jwtMiddleware echo.Middlewar
 	userShareGroup.Use(jwtMiddleware)
 	userShareGroup.GET("", h.GetShares)
 	userShareGroup.DELETE("/:id", h.DeleteShare)
-} 
+}

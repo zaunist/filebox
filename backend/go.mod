@@ -1,4 +1,4 @@
-module github.com/filebox/backend
+module github.com/zaunist/filebox/backend
 
 go 1.21
 

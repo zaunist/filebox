@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/filebox/backend/model"
+	"github.com/zaunist/filebox/backend/model"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
@@ -74,4 +74,4 @@ func NewDatabase() *Database {
 	return &Database{DB: db}
 }
 
-// 这里删除了重复的getEnv函数 
+// 这里删除了重复的getEnv函数

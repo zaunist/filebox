@@ -6,15 +6,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/filebox/backend/model"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/labstack/echo/v4"
+	"github.com/zaunist/filebox/backend/model"
 )
 
 // JWTConfig JWT配置
 type JWTConfig struct {
-	Secret                string
-	ExpirationHours       int
+	Secret                 string
+	ExpirationHours        int
 	RefreshExpirationHours int
 }
 
@@ -164,4 +164,4 @@ func AdminMiddleware() echo.MiddlewareFunc {
 			return next(c)
 		}
 	}
-} 
+}

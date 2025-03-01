@@ -2,7 +2,7 @@
 
 FileBox是一个现代化的文件分享系统，允许用户上传、管理和分享文件。系统支持文件访问控制、过期时间设置和下载次数限制等功能。
 
-灵感来自 https://github.com/vastsa/FileCodeBox，由 cursor + claude-3.7-sonnet 开发完成，作者仅仅按 `enter`，让 AI 继续干活
+灵感来自 https://github.com/vastsa/FileCodeBox ，由 cursor + claude-3.7-sonnet 开发完成，作者仅仅按 `enter`，让 AI 继续干活
 
 ## 功能特点
 
