@@ -7,11 +7,14 @@ ARG VERSION
 
 # 后端构建阶段
 FROM golang:1.21 AS backend-builder
-WORKDIR /app
+WORKDIR /build
 # 设置 Go 模块代理
 ENV GOPROXY=https://goproxy.cn,direct
+# 复制 go.mod 和 go.sum 文件
 COPY backend/go.mod backend/go.sum ./
+# 下载依赖
 RUN go mod download
+# 复制源代码
 COPY backend/ ./
 # 启用 CGO 以支持 SQLite
 RUN CGO_ENABLED=1 GOOS=linux go build -o /filebox-server
