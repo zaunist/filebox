@@ -72,13 +72,12 @@ RUN mkdir -p /app/storage && chmod 777 /app/storage
 RUN mkdir -p /app/data && chmod 777 /app/data
 
 # 设置环境变量
-ENV PORT=8080
 ENV STORAGE_PATH=/app/storage
 ENV DB_TYPE=sqlite
 ENV DB_PATH=/app/data/filebox.db
 
 # 暴露端口
-EXPOSE 80
+EXPOSE 8080
 
 # 启动命令 - 使用 Supervisor 同时启动 Nginx 和后端服务
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

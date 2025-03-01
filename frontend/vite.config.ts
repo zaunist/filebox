@@ -14,7 +14,7 @@ export default defineConfig({
     watch: {
       usePolling: true,
     },
-    host: true, // 监听所有地址
+    host: '0.0.0.0', // 监听所有地址
     strictPort: true,
     port: 5173,
   },

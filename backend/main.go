@@ -123,8 +123,8 @@ func main() {
 
 	// 启动服务器
 	port := fmt.Sprintf(":%d", appConfig.Port)
-	log.Printf("服务器启动在 http://localhost%s", port)
-	if err := e.Start(port); err != nil {
+	log.Printf("服务器启动在 http://0.0.0.0%s", port)
+	if err := e.Start("0.0.0.0" + port); err != nil {
 		log.Fatalf("服务器启动失败: %v", err)
 	}
 }

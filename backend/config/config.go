@@ -31,7 +31,7 @@ func NewAppConfig() *AppConfig {
 		MaxAnonymousFileSize: getEnvAsInt64("MAX_ANONYMOUS_FILE_SIZE", 50*1024*1024), // 50MB
 		DefaultExpireHours:   getEnvAsInt("DEFAULT_EXPIRE_HOURS", 1),
 		DefaultDownloadLimit: getEnvAsInt("DEFAULT_DOWNLOAD_LIMIT", 0),
-		AdminEmail:           getEnv("ADMIN_EMAIL", "admin@example.com"),
+		AdminEmail:           getEnv("ADMIN_EMAIL", "admin@zaunist.com"),
 		AdminPassword:        getEnv("ADMIN_PASSWORD", "box123"),
 	}
 }
