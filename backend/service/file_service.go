@@ -9,15 +9,15 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/zaunist/filebox/backend/config"
+	"github.com/zaunist/filebox/backend/filestore"
 	"github.com/zaunist/filebox/backend/model"
-	"github.com/zaunist/filebox/backend/storage"
 	"gorm.io/gorm"
 )
 
 // FileService 文件服务
 type FileService struct {
 	DB        *gorm.DB
-	Storage   storage.FileStorage
+	Storage   filestore.FileStorage
 	AppConfig *config.AppConfig
 }
 

@@ -9,10 +9,10 @@ import (
 	echomiddleware "github.com/labstack/echo/v4/middleware"
 	"github.com/zaunist/filebox/backend/api"
 	"github.com/zaunist/filebox/backend/config"
+	"github.com/zaunist/filebox/backend/filestore"
 	"github.com/zaunist/filebox/backend/middleware"
 	"github.com/zaunist/filebox/backend/model"
 	"github.com/zaunist/filebox/backend/service"
-	"github.com/zaunist/filebox/backend/storage"
 )
 
 func main() {
@@ -33,7 +33,7 @@ func main() {
 	}
 
 	// 初始化存储
-	localStorage, err := storage.NewLocalStorage(appConfig.StoragePath)
+	localStorage, err := filestore.NewLocalStorage(appConfig.StoragePath)
 	if err != nil {
 		log.Fatalf("初始化存储失败: %v", err)
 	}
