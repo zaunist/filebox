@@ -6,7 +6,7 @@ ARG VCS_REF
 ARG VERSION
 
 # 后端构建阶段
-FROM golang:1.21 AS backend-builder
+FROM golang:1.24 AS backend-builder
 # 设置工作目录
 WORKDIR /build
 # 设置 Go 模块代理
