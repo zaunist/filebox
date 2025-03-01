@@ -1,0 +1,42 @@
+# Go后端
+/backend/tmp
+/backend/storage/*
+!/backend/storage/.gitkeep
+/backend/data/*
+!/backend/data/.gitkeep
+
+# 依赖
+/backend/vendor/
+/frontend/node_modules/
+
+# 构建输出
+/frontend/dist/
+/frontend/build/
+
+# 环境变量
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 日志
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 编辑器和IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# 操作系统
+.DS_Store
+Thumbs.db
+
+# 测试覆盖率
+/backend/coverage/
+/frontend/coverage/ 

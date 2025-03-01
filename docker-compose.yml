@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  # 应用服务（包含前端和后端）
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./storage:/app/storage
+      - ./data:/app/data
+    environment:
+      - PORT=8080
+      - DB_TYPE=sqlite
+      - DB_PATH=/app/data/filebox.db
+      - JWT_SECRET=your_jwt_secret_key
+      - STORAGE_PATH=/app/storage
+      - MAX_FILE_SIZE=104857600
+      - MAX_ANONYMOUS_FILE_SIZE=52428800
+      - DEFAULT_EXPIRE_DAYS=1
+      - DEFAULT_DOWNLOAD_LIMIT=5
+      - ADMIN_EMAIL=admin@boxer.com
+      - ADMIN_PASSWORD=box123
+    restart: unless-stopped

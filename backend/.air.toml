@@ -1,0 +1,37 @@
+# .air.toml 配置文件
+
+root = "."
+tmp_dir = "tmp"
+
+[build]
+# 只需要监视 .go 文件
+include_ext = ["go"]
+# 排除目录
+exclude_dir = ["tmp", "storage", "vendor"]
+# 排除文件
+exclude_file = []
+# 主程序
+cmd = "go build -o ./tmp/main ."
+# 二进制文件路径
+bin = "./tmp/main"
+# 自定义执行命令
+full_bin = "./tmp/main"
+# 监视文件变化的延迟
+delay = 1000
+# 清除旧的二进制文件
+clean_on_exit = true
+
+[log]
+# 显示日志
+time = true
+
+[color]
+# 自定义颜色
+main = "magenta"
+watcher = "cyan"
+build = "yellow"
+runner = "green"
+
+[misc]
+# 退出时发送中断信号
+clean_on_exit = true 

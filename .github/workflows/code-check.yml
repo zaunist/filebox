@@ -1,0 +1,57 @@
+name: 代码检查
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  backend-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v3
+      
+      - name: 设置 Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+          cache: true
+          cache-dependency-path: backend/go.sum
+      
+      - name: 安装依赖
+        run: cd backend && go mod download
+      
+      - name: 运行 Go 代码检查
+        run: cd backend && go vet ./...
+      
+      - name: 运行 Go 测试
+        run: cd backend && go test -v ./...
+
+  frontend-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v3
+      
+      - name: 设置 Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'yarn'
+          cache-dependency-path: frontend/yarn.lock
+      
+      - name: 安装依赖
+        run: cd frontend && yarn install
+      
+      - name: 运行 ESLint
+        run: cd frontend && yarn lint
+      
+      - name: 运行类型检查
+        run: cd frontend && yarn type-check
+      
+      - name: 构建前端
+        run: cd frontend && yarn build 
