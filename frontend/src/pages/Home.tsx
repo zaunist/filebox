@@ -158,39 +158,54 @@ export default function Home() {
         </div>
       </div>
       
-      <div className="bg-white py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              立即开始使用 FileBox
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              注册账号，开始享受简单、安全的文件分享体验。
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <button
-                onClick={() => navigate('/register')}
-                className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-              >
-                免费注册
-              </button>
-              <button
-                onClick={() => navigate('/login')}
-                className="text-sm font-semibold leading-6 text-gray-900"
-              >
-                已有账号？登录 <span aria-hidden="true">→</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      
       <footer className="bg-gray-900">
         <div className="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
-          <div className="mt-8 md:order-1 md:mt-0">
-            <p className="text-center text-xs leading-5 text-gray-400">
-              &copy; {new Date().getFullYear()} FileBox. 保留所有权利。
-            </p>
+          <div className="flex flex-col md:flex-row md:justify-between w-full">
+            <div className="mb-8 md:mb-0">
+              <h3 className="text-sm font-semibold leading-6 text-white">关于作者</h3>
+              <ul className="mt-6 space-y-4">
+                <li>
+                  <a href="https://blog.zaunist.com" target="_blank" rel="noopener noreferrer" className="text-sm leading-6 text-gray-300 hover:text-white">
+                    <span className="flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                      </svg>
+                      博客
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.youtube.com/@zaunist" target="_blank" rel="noopener noreferrer" className="text-sm leading-6 text-gray-300 hover:text-white">
+                    <span className="flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      </svg>
+                      YouTube频道
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://t.me/real_zaunist" target="_blank" rel="noopener noreferrer" className="text-sm leading-6 text-gray-300 hover:text-white">
+                    <span className="flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                      </svg>
+                      Telegram群组
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-sm font-semibold leading-6 text-white">FileBox</h3>
+              <p className="mt-2 text-sm leading-6 text-gray-300">
+                简单、安全的临时文件分享解决方案
+              </p>
+              <p className="mt-4 text-sm leading-6 text-gray-300">
+                © {new Date().getFullYear()} FileBox. 保留所有权利。
+              </p>
+            </div>
           </div>
         </div>
       </footer>

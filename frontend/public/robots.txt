@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /files
+Disallow: /shared
+Disallow: /s/*
+
+Sitemap: https://filebox.example.com/sitemap.xml 
