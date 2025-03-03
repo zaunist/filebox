@@ -15,7 +15,6 @@
 - 🔗 **文件分享与访问控制** - 灵活控制谁可以访问您的文件
 - ⏱️ **文件过期时间设置** - 自动过期，无需手动清理
 - 🔢 **下载次数限制** - 精确控制文件的下载次数
-- 📊 **管理员控制面板** - 全面监控系统运行状态
 - 📱 **响应式前端界面** - 在任何设备上都能获得出色体验
 - 📦 **单一二进制文件部署** - 部署简单快捷
 
@@ -33,7 +32,7 @@
 |------|------|
 | box@zaunist.com | box123... |
 
-> ⚠️ **注意**: 请在生产环境中及时修改默认密码。
+> ⚠️ **注意**: 请在生产环境中及时修改默认密码。PS：目前管理员账户没有任何作用，同时也还不支持修改密码
 
 ## 🛠️ 技术栈
 
@@ -78,7 +77,7 @@
 
 1️⃣ 克隆仓库
 ```bash
-git clone https://github.com/yourusername/filebox.git
+git clone https://github.com/zaunist/filebox.git
 cd filebox
 ```
 
@@ -94,7 +93,7 @@ docker-compose up
 
 1️⃣ 克隆仓库
 ```bash
-git clone https://github.com/yourusername/filebox.git
+git clone https://github.com/zaunist/filebox.git
 cd filebox
 ```
 
@@ -151,20 +150,12 @@ filebox/
 
 本项目使用 GitHub Actions 进行持续集成和部署：
 
-### 代码检查工作流
-
-每次推送到 `main` 分支或创建 Pull Request 时，会自动运行代码检查工作流，包括：
-
-- ✅ 后端 Go 代码检查和测试
-- ✅ 前端 ESLint 检查、类型检查和构建测试
-
 ### Docker 镜像构建和推送
 
 当代码推送到 `main` 分支或创建新的版本标签（格式为 `v*`）时，会自动构建 Docker 镜像并推送到 DockerHub：
 
-- 🏗️ 构建多平台镜像（支持 x86_64）
+- 🏗️ 构建多平台镜像（支持 x86_64，arm的构建有问题，目前作者也用不上，就没去管）
 - 🏷️ 自动添加适当的标签（版本号、分支名、SHA 等）
-- ⚡ 使用缓存加速构建过程
 
 要使用此功能，需要在 GitHub 仓库设置中添加以下 Secrets：
 - `DOCKERHUB_USERNAME`: DockerHub 用户名
