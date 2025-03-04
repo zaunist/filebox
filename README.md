@@ -163,9 +163,9 @@ filebox/
 
 详细说明请参考 [.github/workflows/README.md](.github/workflows/README.md)
 
-## 💡 灵感来源
+## 💡 AI主力开发
 
-灵感来自 [FileCodeBox](https://github.com/vastsa/FileCodeBox)，由 cursor + claude-3.7-sonnet 开发完成，作者仅仅按 `enter`，让 AI 继续干活。
+由 cursor + claude-3.7-sonnet 开发完成，作者仅仅按 `enter`，让 AI 继续干活。
 
 > PS：修改多了以后AI有些抽风，后期还是得作者介入才能完成。
 
